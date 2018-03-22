@@ -1,0 +1,22 @@
+.large-hero {
+    position: relative;
+}
+
+.large-hero__text-content {
+    /* absolute ustawia go relatywnie do pierwszego przodka  */
+    position: absolute; 
+    /* top ustawia element na 50% wysokosci swojego rodzica */
+    top: 50%; 
+    /* transform pozwala na przesuniecie elementu wzgledem siebie
+    w tym przypadu 50% dlugosci tego diva w gore wzgledem ustawienia z top */
+    transform: translateY(-50%);   
+    /* to pozwala umiescic tego diva na gorze */
+
+    /* left ustawia caly div bezposrednio do lewej krawedzi */
+    left:0;
+    /* szerokosc diva na 100% rodzica */
+    width: 100%;
+    /* wysrodkowanie tekstu w divie */
+    text-align: center;
+
+}

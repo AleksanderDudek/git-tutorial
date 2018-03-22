@@ -10,6 +10,8 @@ var cssvars = require('postcss-simple-vars');
 
 var cssnested = require('postcss-nested');
 
+var cssimport = require('postcss-import');
+
 
 gulp.task('default', function () {
 
@@ -24,7 +26,7 @@ gulp.task('html', function () {
 gulp.task('styles', function () {
 
 	return gulp.src('./app/assets/styles/styles.css')
-	.pipe(postcss([ cssvars, cssnested, autoprefixer ]))
+	.pipe(postcss([ cssimport, cssvars, cssnested, autoprefixer ]))
 	.pipe(gulp.dest('./app/temp/styles'));
 
 });
