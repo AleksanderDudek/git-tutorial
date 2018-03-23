@@ -12,6 +12,7 @@ var cssnested = require('postcss-nested');
 
 var cssimport = require('postcss-import');
 
+var browsersync = require('browser-sync').create();
 
 gulp.task('default', function () {
 
@@ -33,14 +34,23 @@ gulp.task('styles', function () {
 
 gulp.task('watch', function () {
 
+	browsersync.init({
+		server : {
+			baseDir: "app"
+		}
+	});
+
 	watch('./app/index.html', function () {
 	
-		gulp.start('html');
+		browsersync.reload();
 	});
 
 	watch('./app/assets/styles/**/*.css',function (){
-		gulp.start('styles')
+		gulp.start('cssInject');
+	});
 });
 
+gulp.task('cssInject', ['styles'],function () {
+	return gulp.src('./app/temp/styles/styles.css')
+	.pipe(browsersync.stream());
 });
-
